@@ -10,11 +10,50 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounterAnimations();
   initParallaxEffects();
   init3DScrollDepthObserver();
+  initMobileMenu();
 
   window.addEventListener('resize', () => {
     setTimeout(drawSpiralConnectors, 100);
   });
 });
+
+/* ==========================================================================
+   MOBILE MENU TOGGLE
+   ========================================================================== */
+function initMobileMenu() {
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  const navbar = document.querySelector('.navbar');
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      if (navbar) navbar.classList.toggle('menu-open');
+      document.body.classList.toggle('mobile-menu-expanded');
+    });
+
+    // Close menu when clicking outside or clicking any nav link
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        if (navbar) navbar.classList.remove('menu-open');
+        document.body.classList.remove('mobile-menu-expanded');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!navbar.contains(e.target) && navLinks.classList.contains('active')) {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        if (navbar) navbar.classList.remove('menu-open');
+        document.body.classList.remove('mobile-menu-expanded');
+      }
+    });
+  }
+}
 
 /* ── Global Mouse & Touch Tracker for 3D Parallax ── */
 let globalMouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
