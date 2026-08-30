@@ -680,18 +680,45 @@ body.mobile-menu-expanded {
   position: absolute;
   width: 160px;
   height: 160px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1.5px solid rgba(201, 128, 10, 0.35);
-  box-shadow: 0 0 20px rgba(201, 128, 10, 0.1),
-              inset 0 0 15px rgba(21, 80, 160, 0.04);
+  background: rgba(15, 23, 42, 0.9);
+  border: 1.5px solid rgba(201, 128, 10, 0.5);
+  box-shadow: 0 0 25px rgba(201, 128, 10, 0.25),
+              inset 0 0 15px rgba(201, 128, 10, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  border-radius: 8px;
+  backface-visibility: visible;
+}
+
+.cube-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cube-face .cube-label {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: var(--accent-gold);
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 0.9rem;
-  color: var(--accent-gold);
+  font-size: 0.75rem;
   letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(201, 128, 10, 0.4);
+  pointer-events: none;
+  z-index: 2;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .cube-face.front  { transform: translateZ(80px); }
