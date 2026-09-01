@@ -2876,6 +2876,35 @@ html {
     width: 140px;
     height: 175px;
   }
+.map-actions-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.map-direct-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201, 128, 10, 0.12);
+  border: 1.5px solid rgba(201, 128, 10, 0.45);
+  color: var(--accent-gold);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.map-direct-btn:hover {
+  background: linear-gradient(135deg, #C9800A 0%, #E89B10 100%);
+  color: #0D1B3E;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201, 128, 10, 0.45);
+  border-color: transparent;
 }
 
 
