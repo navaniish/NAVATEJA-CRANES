@@ -2707,14 +2707,18 @@ html {
 .big-msme-logo {
   width: 140px;
   height: 140px;
-  object-fit: contain;
-  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.5));
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2.5px solid rgba(201, 128, 10, 0.65);
+  box-shadow: 0 0 25px rgba(201, 128, 10, 0.4), 0 8px 20px rgba(0, 0, 0, 0.5);
   flex-shrink: 0;
-  transition: transform 0.3s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .bottom-msme-card:hover .big-msme-logo {
-  transform: scale(1.05) rotate(2deg);
+  transform: scale(1.06) rotate(3deg);
+  box-shadow: 0 0 35px rgba(201, 128, 10, 0.65), 0 12px 25px rgba(0, 0, 0, 0.6);
+  border-color: rgba(201, 128, 10, 0.9);
 }
 
 .bottom-msme-text {
