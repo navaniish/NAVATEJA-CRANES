@@ -2751,6 +2751,14 @@ html {
   margin: 0;
 }
 
+.udyam-cert-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
 .cert-verify-tag {
   display: inline-flex;
   align-items: center;
@@ -2760,9 +2768,31 @@ html {
   color: #10B981;
   background: rgba(16, 185, 129, 0.1);
   border: 1px solid rgba(16, 185, 129, 0.3);
-  padding: 3px 10px;
+  padding: 4px 10px;
   border-radius: 20px;
-  margin-top: 4px;
+}
+
+.udyam-btn-preview {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #C9800A 0%, #E89B10 100%);
+  color: #0D1B3E;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(201, 128, 10, 0.35);
+  transition: all 0.3s ease;
+}
+
+.udyam-btn-preview:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201, 128, 10, 0.55);
+  background: linear-gradient(135deg, #E89B10 0%, #FFB703 100%);
+  color: #0D1B3E;
 }
 
 .udyam-preview-box {
