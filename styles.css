@@ -2876,6 +2876,8 @@ html {
     width: 140px;
     height: 175px;
   }
+}
+
 .map-actions-row {
   display: flex;
   justify-content: center;
