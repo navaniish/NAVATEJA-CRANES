@@ -484,26 +484,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 });
-
-/* ==========================================================================
-   WORK GALLERY LIGHTBOX MODAL
-   ========================================================================== */
-function openGalleryModal(src, caption) {
-  const modal = document.getElementById('galleryModal');
-  const modalImg = document.getElementById('modalImg');
-  const modalCaption = document.getElementById('modalCaption');
-  if (modal && modalImg) {
-    modalImg.src = src;
-    if (modalCaption) modalCaption.textContent = caption || '';
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  }
-}
-
-function closeGalleryModal() {
-  const modal = document.getElementById('galleryModal');
-  if (modal) {
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-}
