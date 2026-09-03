@@ -2907,6 +2907,124 @@ html {
   border-color: transparent;
 }
 
+/* ==========================================================================
+   WORK GALLERY STYLES & LIGHTBOX
+   ========================================================================== */
+.gallery-img-wrap {
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: #0d1b3e;
+}
+
+.gallery-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+.gallery-card:hover .gallery-card-img {
+  transform: scale(1.08);
+  filter: brightness(1.05);
+}
+
+.gallery-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 27, 62, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.gallery-card:hover .gallery-img-overlay {
+  opacity: 1;
+}
+
+.zoom-icon {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: var(--accent-gold);
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(201, 128, 10, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.featured-gallery-card {
+  border: 1.5px solid rgba(201, 128, 10, 0.4) !important;
+  box-shadow: 0 12px 35px rgba(201, 128, 10, 0.15) !important;
+}
+
+/* Lightbox Modal */
+.gallery-modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
+  background: rgba(13, 27, 62, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+  cursor: zoom-out;
+  animation: fadeInModal 0.3s ease forwards;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content-img {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  border: 1.5px solid rgba(201, 128, 10, 0.5);
+}
+
+.modal-caption-text {
+  margin-top: 1rem;
+  color: var(--accent-gold);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  max-width: 800px;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #FFFFFF;
+  font-size: 2.5rem;
+  font-weight: 300;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  line-height: 1;
+}
+
+.modal-close-btn:hover {
+  color: var(--accent-gold);
+}
+
 
 
 
