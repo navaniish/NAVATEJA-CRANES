@@ -484,3 +484,87 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 });
+
+/* ==========================================================================
+   WORK GALLERY INTERACTIVE LIGHTBOX & FILTERING
+   ========================================================================== */
+const workGalleryData = [
+  { img: 'cover-navateja.png', category: 'hq', tag: 'HEADQUARTERS & FLEET SHOWCASE', title: 'NavaTeja Cranes Heavy Fleet Command', desc: 'Our premier lineup of certified Farana and heavy-lift cranes ready for immediate deployment.' },
+  { img: 'IMG20260824132407.jpg', category: 'erection', tag: 'INDUSTRIAL SITE LIFTING', title: 'Heavy Rigging & Structural Erection', desc: 'Precision crane maneuvering during plant module setup.' },
+  { img: 'IMG20260901121320.jpg', category: 'onsite', tag: 'FIELD OPERATIONS', title: 'Machinery Installation & Transport', desc: 'Executing zero-risk elevation of heavy equipment.' },
+  { img: 'new4.jpeg', category: 'erection', tag: '25T FARANA CRANE', title: 'Precision Load Elevation', desc: 'Mobile crane mobility and high-capacity boom extension.' },
+  { img: 'new2.jpeg', category: 'onsite', tag: 'SITE DEPLOYMENT', title: 'Round-The-Clock Site Support', desc: 'Multi-crane operations for high-priority industrial projects.' }
+];
+
+let currentWorkIndex = 0;
+
+function filterWorkGallery(category, btnElement) {
+  const filterBtns = document.querySelectorAll('.work-filter-btn');
+  filterBtns.forEach(btn => btn.classList.remove('active'));
+  if (btnElement) btnElement.classList.add('active');
+
+  const cards = document.querySelectorAll('.work-grid-card');
+  cards.forEach(card => {
+    const cardCat = card.getAttribute('data-category');
+    if (category === 'all' || cardCat === category) {
+      card.style.display = 'block';
+      card.style.opacity = '1';
+      card.style.transform = 'scale(1)';
+    } else {
+      card.style.display = 'none';
+      card.style.opacity = '0';
+      card.style.transform = 'scale(0.95)';
+    }
+  });
+}
+
+function openWorkLightbox(index) {
+  currentWorkIndex = index;
+  const item = workGalleryData[index];
+  if (!item) return;
+
+  const modal = document.getElementById('work-lightbox');
+  const img = document.getElementById('lightbox-img');
+  const tag = document.getElementById('lightbox-tag');
+  const title = document.getElementById('lightbox-title');
+  const desc = document.getElementById('lightbox-desc');
+
+  if (modal && img) {
+    img.src = item.img;
+    if (tag) tag.textContent = item.tag;
+    if (title) title.textContent = item.title;
+    if (desc) desc.textContent = item.desc;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeWorkLightbox(event) {
+  if (event && event.target && event.target.closest('.lightbox-content') && !event.target.classList.contains('lightbox-close')) {
+    return;
+  }
+  const modal = document.getElementById('work-lightbox');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+function navigateWorkLightbox(direction) {
+  currentWorkIndex += direction;
+  if (currentWorkIndex < 0) {
+    currentWorkIndex = workGalleryData.length - 1;
+  } else if (currentWorkIndex >= workGalleryData.length) {
+    currentWorkIndex = 0;
+  }
+  openWorkLightbox(currentWorkIndex);
+}
+
+document.addEventListener('keydown', (e) => {
+  const modal = document.getElementById('work-lightbox');
+  if (modal && modal.classList.contains('active')) {
+    if (e.key === 'Escape') closeWorkLightbox();
+    if (e.key === 'ArrowLeft') navigateWorkLightbox(-1);
+    if (e.key === 'ArrowRight') navigateWorkLightbox(1);
+  }
+});
